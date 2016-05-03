@@ -10,7 +10,7 @@ angular.module('pickAColor', [])
         this.options = {};
 
         this.$get = function () {
-            var localOptions = this.options;
+            var localOptions = angular.copy(this.options);
             return {
                 getOptions: function () {
                     return localOptions;
@@ -41,32 +41,32 @@ angular.module('pickAColor', [])
                 return function (scope, element, attrs, controller) {
                     // Process options
                     var options = pickAColor.getOptions();
-                    if (attrs.inlineDropdown !== null) {
-                        options.inlineDropdown = attrs.inlineDropdown;
+                    if (attrs.inlineDropdown) {
+                        options.inlineDropdown = attrs.inlineDropdown == "true";
                     }
-                    if (attrs.showSpectrum !== null) {
-                        options.showSpectrum = attrs.showSpectrum;
+                    if (attrs.showSpectrum) {
+                        options.showSpectrum = attrs.showSpectrum == "true";
                     }
-                    if (attrs.showSavedColors !== null) {
-                        options.showSavedColors = attrs.showSavedColors;
+                    if (attrs.showSavedColors) {
+                        options.showSavedColors = attrs.showSavedColors == "true";
                     }
-                    if (attrs.saveColorsPerElement !== null) {
-                        options.saveColorsPerElement = attrs.saveColorsPerElement;
+                    if (attrs.saveColorsPerElement) {
+                        options.saveColorsPerElement = attrs.saveColorsPerElement == "true";
                     }
-                    if (attrs.fadeMenuToggle !== null) {
-                        options.fadeMenuToggle = attrs.fadeMenuToggle;
+                    if (attrs.fadeMenuToggle) {
+                        options.fadeMenuToggle = attrs.fadeMenuToggle == "true";
                     }
-                    if (attrs.showAdvanced !== null) {
-                        options.showAdvanced = attrs.showAdvanced;
+                    if (attrs.showAdvanced) {
+                        options.showAdvanced = attrs.showAdvanced == "true";
                     }
-                    if (attrs.showBasicColors !== null) {
-                        options.showBasicColors = attrs.showBasicColors;
+                    if (attrs.showBasicColors) {
+                        options.showBasicColors = attrs.showBasicColors == "true";
                     }
-                    if (attrs.showHexInput !== null) {
-                        options.showHexInput = attrs.showHexInput;
+                    if (attrs.showHexInput) {
+                        options.showHexInput = attrs.showHexInput == "true";
                     }
-                    if (attrs.allowBlank !== null) {
-                        options.allowBlank = attrs.allowBlank;
+                    if (attrs.allowBlank) {
+                        options.allowBlank = attrs.allowBlank == "true";
                     }
 
                     scope.$watch(model, function(value) {
